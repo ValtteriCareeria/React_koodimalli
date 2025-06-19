@@ -45,3 +45,10 @@
   border-radius: 30px;
   padding-left: 10%;
 }
+.nappi {
+  border-radius: 10px;
+  margin-left: 10px;
+  font-size: 26px;
+  background-color: chocolate;
+  color: white;
+}

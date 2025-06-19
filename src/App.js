@@ -1,39 +1,89 @@
-import React, {use, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Laskuri from './Laskuri';
-import Viesti from './Viesti';
 import Posts from './Posts';
 import CustomerList from './CustomerList';
+import Message from './Message'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import UserList from './UserList';
+import Login from './Login';
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
 
 const App = () => {
 
-const [showLaskuri, setShowLaskuri] = useState(false)
 
-const [showPosts, setShowPosts] = useState(false)
+const [showMessage, setShowMessage] = useState(false)
+const [message, setMessage] = useState('')
+const [isPositive, setIsPositive] = useState(false)
+const [loggedInUser, setLoggedInUser] = useState('')
+
+useEffect(() => {
+  let storedUser = localStorage.getItem("username")
+  if (storedUser !== null) {
+    setLoggedInUser(storedUser)
+  }
+},[])
 
 
-const huomio = () => {
-  alert("Huomio!")
-} 
-  return (
+// Logout napin tapahtumankäsittelijä
+const logout = () => {
+  localStorage.clear()
+  setLoggedInUser('')
+}
+  
+ 
+ return (
     <div className="App">
-      <h1>Hello from React!</h1>
 
-      <CustomerList/>
 
-        
-        {showPosts && <Posts/>}
-        {showPosts && <button onClick={() => setShowPosts(!showPosts)}>Piilota tiedot</button>}
-        {!showPosts && <button onClick={() => setShowPosts(!showPosts)}>Näytä tiedot</button>}
+    {!loggedInUser && <Login setMessage={setMessage} setIsPositive={setIsPositive} 
+                setShowMessage={setShowMessage} setLoggedInUser={setLoggedInUser} />}
+
+    { loggedInUser && 
+      <Router>
       
-        {showLaskuri && <Laskuri huomio={huomio} />}
-        {showLaskuri && <button onClick={() => setShowLaskuri(!showLaskuri)}>Piilota Laskuri</button>}
-        {!showLaskuri && <button onClick={() => setShowLaskuri(!showLaskuri)}>Näytä laskuri</button>}
+          <Navbar bg="dark" variant="dark">
+            <Nav className="mr-auto">
+                <Nav.Link href='/customers'>Customers</Nav.Link>
+                <Nav.Link href='/posts'>Some higlights</Nav.Link>
+                <Nav.Link href='/users'>Users</Nav.Link>
+                <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
+                <button onClick={() => logout()}>Logout</button>
+            </Nav>
+          </Navbar>
+                        
+        <h1>Northwind Corporation</h1>
 
-        <Viesti  teksti ="tervehdys app komponentistä"/>
+        {showMessage && <Message message={message} isPositive={isPositive} />}
 
+        <Routes>
+          <Route path="/customers"
+          element={<CustomerList setMessage={setMessage} setIsPositive={setIsPositive} 
+          setShowMessage={setShowMessage} />}>
+          </Route>
+
+          <Route path="/users"
+          element={<UserList setMessage={setMessage} setIsPositive={setIsPositive} 
+          setShowMessage={setShowMessage} />}>
+          </Route>
+
+          <Route path="/posts"
+          element={<Posts />}>
+          </Route>
+          
+          <Route path="/laskuri" 
+          element={<Laskuri />}>
+        </Route>
+        
+        </Routes>
+      </Router>
+      }
     </div>
-  );
+  )
 }
 
 export default App;

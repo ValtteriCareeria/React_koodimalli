@@ -1,7 +1,7 @@
 import './App.css';
 import React, {useState} from 'react';
 
-const Laskuri = ({huomio}) => {
+const Laskuri = () => {
 
 const [luku, setLuku] = useState(0)
 
@@ -13,7 +13,6 @@ const [luku, setLuku] = useState(0)
         <button onClick={() => setLuku(luku - 1)}>-</button>
         <button onClick={() => setLuku(0)}>nollaa</button>
 
-        <button onClick={huomio}>huomio</button>
       
     </>
   );
