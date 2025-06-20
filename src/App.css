@@ -52,3 +52,389 @@
   background-color: chocolate;
   color: white;
 }
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.4s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1a1a1a; /* tumma mutta ei musta */
+}
+
+/* Login-boksi */
+.login-box {
+  background-color: #2a2a2a;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+  width: 300px;
+  text-align: center;
+  border: 2px solid #b30000;
+  color: #f5f5f5;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  color: #ff4d4d;
+  font-weight: 500;
+}
+
+/* Syötekentät */
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: #404040;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+.login-box input[type="text"]:focus,
+.login-box input[type="password"]:focus {
+  background-color: #555;
+}
+
+/* Napit */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-group button {
+  width: 48%;
+  padding: 10px;
+  background-color: #e60000;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.button-group button:hover {
+  background-color: #ff1a1a;
+}
+.App {
+  background-color: #1a1a1a;
+  min-height: 100vh;
+  color: #f5f5f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Keskitetty näkymä loggedIn-userin jälkeen */
+.main-container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+  animation: fadeIn 1s ease-in;
+}
+
+/* Animaatio fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Otsikko */
+h1 {
+  color: #ff4d4d;
+  text-align: center;
+  margin-bottom: 40px;
+  text-shadow: 0 0 10px #ff4d4d;
+}
+
+/* Logout-nappi */
+.logout-button {
+  background-color: #e60000;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  margin-left: 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.logout-button:hover {
+  background-color: #ff1a1a;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+}
+
+/* Nav-linkit */
+.navbar-dark .navbar-nav .nav-link {
+  color: #ff9999 !important;
+  font-weight: bold;
+  margin-right: 10px;
+  position: relative;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px #ff4d4d;
+  transform: scale(1.05);
+}
+
+/* Aktiivinen linkki korostettuna */
+.navbar-dark .navbar-nav .nav-link.active {
+  color: #ffffff !important;
+  text-shadow: 0 0 12px #ff4d4d;
+}
+
+/* Navigaation tausta */
+.navbar {
+  box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+}
+.product-card {
+  background-color: #1a1a1a;
+  color: #f2f2f2;
+  border: 1px solid #ff4d4d;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+}
+
+/* Otsikko */
+.product-card .card-title {
+  color: #ff6666;
+  font-weight: bold;
+  text-shadow: 0 0 5px #ff4d4d;
+  margin-bottom: 1rem;
+}
+
+/* Teksti */
+.product-card .card-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Nappiryhmä */
+.product-card .btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Napit */
+.product-card .btn {
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+/* Edit-nappi */
+.product-card .btn-primary {
+  background-color: #cc0000;
+  color: white;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+}
+
+.product-card .btn-primary:hover {
+  background-color: #ff1a1a;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.8);
+}
+
+/* Delete-nappi */
+.product-card .btn-danger {
+  background-color: #660000;
+  color: #ffcccc;
+  box-shadow: 0 0 8px rgba(255, 80, 80, 0.3);
+}
+
+.product-card .btn-danger:hover {
+  background-color: #990000;
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+}
+.product-page {
+  padding: 2rem;
+  background-color: #111;
+  color: #f2f2f2;
+}
+
+/* Otsikkorivi ja napin asettelu */
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Klikattava otsikko */
+.clickable-title {
+  color: #ff4d4d;
+  cursor: pointer;
+  text-shadow: 0 0 8px #ff3333;
+  transition: transform 0.3s ease;
+  margin: 0;
+}
+
+.clickable-title:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 12px #ff1a1a;
+}
+
+/* Hakukenttä */
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ff4d4d;
+  background-color: #222;
+  color: #fff;
+  box-shadow: 0 0 6px rgba(255, 0, 0, 0.3);
+  margin-bottom: 1.5rem;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+/* Lisää-nappi */
+.btn-add {
+  background-color: #cc0000;
+  color: white;
+  padding: 10px 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-add:hover {
+  background-color: #ff1a1a;
+  box-shadow: 0 0 16px rgba(255, 0, 0, 0.8);
+  transform: scale(1.05);
+}
+.product-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap; /* Jos näyttö pienenee, aseta allekkain */
+  gap: 1rem;
+}
+.edit-container {
+  background-color: #1c1c1c;
+  color: #fff;
+  padding: 2rem;
+  max-width: 500px;
+  margin: 2rem auto;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.2);
+}
+
+.edit-title {
+  color: #ff3333;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 8px #ff0000;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.edit-input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ff4d4d;
+  background-color: #2a2a2a;
+  color: #fff;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.edit-input:focus {
+  outline: none;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
+}
+
+.edit-input.disabled {
+  background-color: #444;
+  cursor: not-allowed;
+}
+
+.edit-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ccc;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-red {
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+}
+
+.btn-red:hover {
+  background-color: #ff1a1a;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+  transform: scale(1.05);
+}
+
+.btn-black {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+.btn-black:hover {
+  background-color: #555;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+  transform: scale(1.05);
+}
+.error-text {
+  color: red;
+  text-align: center;
+  font-weight: bold;
+}

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://restnorth-eehxe4awgvg7ajb2.northeurope-01.azurewebsites.net/api/customers"
+const baseUrl = "https://restnorth-eehxe4awgvg7ajb2.northeurope-01.azurewebsites.net/api/Products"
 
 let token = null
 
@@ -19,11 +19,11 @@ const getAll = () => {
 }
 
 
-const create = newCustomer => {
+const create = newProduct => {
     const config = {
         headers: { Authorization: token },
     }
-    return axios.post(baseUrl, newCustomer, config)
+    return axios.post(baseUrl, newProduct, config)
 }
 
 
@@ -38,7 +38,7 @@ const update = (object) => {
     const config = {
         headers: { Authorization: token },
     }
-    return axios.put(`${baseUrl}/${object.customerId}`, object, config)
+    return axios.put(`${baseUrl}/${object.productId}`, object, config)
 }
 
 

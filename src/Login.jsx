@@ -13,17 +13,17 @@ const [Password, setPassword] = useState('')
 
 // onSubmit tapahtumankäsittelijä funktio
 const handleSubmit = (event) => {
-      event.preventDefault()
-      var userForAuth = {
-        username: Username,
-        password: md5(Password) // Salataan md5 kirjaston metodilla
-    }
-    
-    //console.log(userForAuth)
+  event.preventDefault()
 
-    LoginService.authenticate(userForAuth)
+  const userForAuth = {
+    username: Username,
+    password: md5(Password)
+  }
+
+  LoginService.authenticate(userForAuth)
     .then(response => {
       if (response.status === 200) {
+        const user = response.data
 
         localStorage.setItem("username", response.data.username)
         localStorage.setItem("accesslevelId", response.data.accesslevelId)
@@ -32,17 +32,15 @@ const handleSubmit = (event) => {
         // Asetetaan app komponentissa olevaan stateen
         setLoggedInUser(response.data.username)
 
-       setMessage(`Logged in as: ${userForAuth.username}`)
-       setIsPositive(true)
-       setShowMessage(true)
-      
-       setTimeout(() => {
-        setShowMessage(false)
-       }, 5000)
+        setMessage(`Logged in as: ${user.username}`)
+        setIsPositive(true)
+        setShowMessage(true)
 
-    }
-
-      })
+        setTimeout(() => {
+          setShowMessage(false)
+        }, 5000)
+      }
+    })
       .catch(error => {
         setMessage(error)
         setIsPositive(false)
@@ -62,25 +60,30 @@ const handleSubmit = (event) => {
 
 
   return (
-    <div id="loginWindow">
-       <h2>Login</h2>
-
-       <form onSubmit={handleSubmit}>
-            <div>
-                <input type="text" value={Username} placeholder="Username"
-                    onChange={({ target }) => setUsername(target.value)} />
-            </div>
-            <div>
-                <input type="password" value={Password} placeholder="Password"
-                    onChange={({ target }) => setPassword(target.value)} />
-            </div>
-            
-         <input type='submit' value='Login' />
-         <input type='button' value='Empty' onClick={() => emptyFields()} />
-       </form>
-
+  <div className="login-container">
+    <div className="login-box">
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={Username}
+          placeholder="Username"
+          onChange={({ target }) => setUsername(target.value)}
+        />
+        <input
+          type="password"
+          value={Password}
+          placeholder="Password"
+          onChange={({ target }) => setPassword(target.value)}
+        />
+        <div className="button-group">
+          <button type="submit">Login</button>
+          <button type="button" onClick={emptyFields}>Empty</button>
+        </div>
+      </form>
     </div>
-  )
+  </div>
+)
 }
 
 export default Login
